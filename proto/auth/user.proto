@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package="mkaascs.v1.auth;authv1";
+
+import "auth/auth.proto";
+
+service User {
+    rpc GetUser (GetUserRequest) returns (GetUserResponse);
+    rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+}
+
+message GetUserRequest {
+    int64 user_id = 1;
+}
+
+message GetUserResponse {
+    UserInfo user = 1;
+}
+
+message ChangePasswordRequest {
+    int64 user_id = 1;
+    string old_password = 2;
+    string new_password = 3;
+}
+
+message ChangePasswordResponse {}
+
+message UpdateUserRequest {
+    int64 user_id = 1;
+    optional string login = 2;
+    optional string email = 3;
+}
+
+message UpdateUserResponse {
+    UserInfo user = 1;
+}

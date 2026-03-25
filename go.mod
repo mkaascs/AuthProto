@@ -1,4 +1,4 @@
-module github.com/mkaascs/SsoProto
+module github.com/mkaascs/AuthProto
 
 go 1.23.2
 

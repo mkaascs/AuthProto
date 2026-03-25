@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package="mkaascs.v1.auth;authv1";
+
+service Token {
+    rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+message ValidateTokenRequest {
+    string access_token = 1;
+}
+
+message ValidateTokenResponse {
+    bool valid = 1;
+    int64 user_id = 2;
+    repeated string roles = 3;
+    int64 expires_at = 4;
+}
