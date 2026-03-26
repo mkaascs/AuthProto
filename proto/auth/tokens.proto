@@ -4,6 +4,14 @@ package auth;
 
 option go_package="mkaascs.v1.auth;authv1";
 
+enum TokenStatus {
+    UNSPECIFIED = 0;
+    VALID = 1;
+    EXPIRED = 2;
+    INVALID = 3;
+    REVOKED = 4;
+}
+
 service Token {
     rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
 }
@@ -13,14 +21,6 @@ message ValidateTokenRequest {
 }
 
 message ValidateTokenResponse {
-    enum TokenStatus {
-        STATUS_UNSPECIFIED = 0;
-        VALID = 1;
-        EXPIRED = 2;
-        INVALID = 3;
-        REVOKED = 4;
-    }
-
     TokenStatus status = 1;
     int64 user_id = 2;
     repeated string roles = 3;
