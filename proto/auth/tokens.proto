@@ -13,7 +13,15 @@ message ValidateTokenRequest {
 }
 
 message ValidateTokenResponse {
-    bool valid = 1;
+    enum TokenStatus {
+        STATUS_UNSPECIFIED = 0;
+        VALID = 1;
+        EXPIRED = 2;
+        INVALID = 3;
+        REVOKED = 4;
+    }
+
+    TokenStatus status = 1;
     int64 user_id = 2;
     repeated string roles = 3;
     int64 expires_at = 4;
