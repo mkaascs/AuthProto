@@ -14,8 +14,11 @@ Protobuf-first authentication service for microservices architecture. Provides b
 
 **User Service** — Profile management
 - `User.GetUser` — Get user profile by ID
+- `User.GetUsers` — Get list of users (optional by role)
 - `User.UpdateUser` — Update login, email, or other profile data
 - `User.ChangePassword` — Change password with old password confirmation
+- `User.AssignRole` — Assign role for user by ID
+- `User.RevokeRole` — Revoke role for user by ID
 
 **Token Service** — Token validation for downstream services
 - `Token.ValidateToken` — Verify JWT token, return user_id and roles
